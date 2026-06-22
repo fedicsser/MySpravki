@@ -15,9 +15,24 @@ namespace MySpravki
         public RequestForm()
         {
             InitializeComponent();
+            comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox1.Text == "Произвольная справка")
+            {
+                textBox4.Visible = true;
+
+            }
+            if (comboBox1.Text != "Произвольная справка")
+            {
+                textBox4.Visible = false;
+
+            }
         }
 
 
-        
+
     }
 }
