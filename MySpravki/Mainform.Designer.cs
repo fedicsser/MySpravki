@@ -48,6 +48,7 @@
             addBTN.TabIndex = 1;
             addBTN.Text = "Запросить справку";
             addBTN.UseVisualStyleBackColor = true;
+            addBTN.Click += addBTN_Click;
             // 
             // UpdBTN
             // 

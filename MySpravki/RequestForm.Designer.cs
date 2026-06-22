@@ -62,6 +62,7 @@
             requestBTN.TabIndex = 1;
             requestBTN.Text = "Запорсить";
             requestBTN.UseVisualStyleBackColor = true;
+            requestBTN.Click += requestBTN_Click;
             // 
             // textBox1
             // 

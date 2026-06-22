@@ -16,5 +16,11 @@ namespace MySpravki
         {
             InitializeComponent();
         }
+
+        private void addBTN_Click(object sender, EventArgs e)
+        {
+            RequestForm requestForm = new RequestForm();
+            requestForm.ShowDialog();
+        }
     }
 }

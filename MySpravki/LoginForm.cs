@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,8 +13,10 @@ namespace MySpravki
 {
     public partial class LoginForm : Form
     {
+        public static int userId;
         public LoginForm()
         {
+            
             InitializeComponent();
         }
 
@@ -32,14 +35,17 @@ namespace MySpravki
             {
                 try
                 {
-                    string userId = User.UserAuth(loginT.Text, passwprdT.Text);
-                    if (userId != null)
+                    string authuserId = User.UserAuth(loginT.Text, passwprdT.Text);
+                    if (authuserId != null)
                     {
                         MessageBox.Show("Добро пожаловать");
-                        /*MessageBox.Show(userId);*/
+                        
+                        userId = Convert.ToInt32(authuserId);
+                        MessageBox.Show(userId.ToString());
                         this.Hide();
                         Mainform mainform = new Mainform();
                         mainform.ShowDialog();
+                        
                     }
                     else
                     {
