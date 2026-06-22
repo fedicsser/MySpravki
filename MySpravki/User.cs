@@ -19,7 +19,7 @@ namespace MySpravki
             try
             {
                 db.openConnection();
-                string query = "SELECT id FROM `user` WHERE login = @Login AND password = @Password;";
+                string query = "SELECT id FROM `user` WHERE user_name = @Login AND password = @Password;";
                 MySqlCommand cmd = new MySqlCommand(query, db.getConnection());
                 cmd.Parameters.AddWithValue("@Login", Login);
                 cmd.Parameters.AddWithValue("@Password", Password);
