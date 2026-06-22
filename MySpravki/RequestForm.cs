@@ -5,9 +5,7 @@ namespace MySpravki
 {
     public partial class RequestForm : Form
     {
-        // Переменная для хранения созданного объекта
         private Proof currentProof;
-
         public RequestForm()
         {
             InitializeComponent();

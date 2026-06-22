@@ -35,10 +35,12 @@
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.Location = new Point(12, 48);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(960, 430);
             flowLayoutPanel1.TabIndex = 0;
+            flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
             // addBTN
             // 
@@ -58,6 +60,7 @@
             UpdBTN.TabIndex = 2;
             UpdBTN.Text = "Обновить статусы";
             UpdBTN.UseVisualStyleBackColor = true;
+            UpdBTN.Click += UpdBTN_Click;
             // 
             // Mainform
             // 
