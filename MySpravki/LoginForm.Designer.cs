@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             lgbtn = new Button();
             loginT = new TextBox();
             passwprdT = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
             SuspendLayout();
             // 
             // lgbtn
@@ -39,7 +42,7 @@
             lgbtn.Name = "lgbtn";
             lgbtn.Size = new Size(75, 23);
             lgbtn.TabIndex = 0;
-            lgbtn.Text = "button1";
+            lgbtn.Text = "Войти";
             lgbtn.UseVisualStyleBackColor = true;
             lgbtn.Click += lgbtn_Click;
             // 
@@ -59,16 +62,37 @@
             passwprdT.Size = new Size(100, 23);
             passwprdT.TabIndex = 2;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(115, 121);
+            label1.Name = "label1";
+            label1.Size = new Size(40, 15);
+            label1.TabIndex = 3;
+            label1.Text = "логин";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(115, 209);
+            label2.Name = "label2";
+            label2.Size = new Size(47, 15);
+            label2.TabIndex = 4;
+            label2.Text = "пароль";
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(347, 450);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(passwprdT);
             Controls.Add(loginT);
             Controls.Add(lgbtn);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LoginForm";
-            Text = "LoginForm";
+            Text = "Авторизация";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -78,5 +102,7 @@
         private Button lgbtn;
         private TextBox loginT;
         private TextBox passwprdT;
+        private Label label1;
+        private Label label2;
     }
 }

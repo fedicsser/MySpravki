@@ -41,10 +41,18 @@ namespace MySpravki
                         MessageBox.Show("Добро пожаловать");
                         
                         userId = Convert.ToInt32(authuserId);
-                        MessageBox.Show(userId.ToString());
                         this.Hide();
-                        Mainform mainform = new Mainform();
-                        mainform.ShowDialog();
+                        if (userId == 2)
+                        {
+                            WorkForm wf = new WorkForm();
+                            wf.ShowDialog();
+                        }
+                        else
+                        {
+                            Mainform mainform = new Mainform();
+                            mainform.ShowDialog();
+                        }
+                            
                         
                     }
                     else

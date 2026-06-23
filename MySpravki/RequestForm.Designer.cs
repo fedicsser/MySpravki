@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RequestForm));
             comboBox1 = new ComboBox();
             requestBTN = new Button();
             textBox1 = new TextBox();
@@ -182,8 +183,10 @@
             Controls.Add(textBox1);
             Controls.Add(requestBTN);
             Controls.Add(comboBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "RequestForm";
-            Text = "RequestForm";
+            Text = "Запрос спарвки";
+            Load += RequestForm_Load;
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();

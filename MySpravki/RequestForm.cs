@@ -10,8 +10,6 @@ namespace MySpravki
         {
             InitializeComponent();
             comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
-
-            // Изначально скрываем поле для произвольной справки
             textBox4.Visible = false;
         }
 
@@ -39,68 +37,73 @@ namespace MySpravki
                 {
                     MessageBox.Show("Заполните все поля!");
                 }
-
-                int type = 0;
-                string other = "";
-
-                switch (comboBox1.Text)
-                {
-                    case "2-НДФЛ":
-                        type = 1;
-                        break;
-                    case "О месте работы и стаже":
-                        type = 2;
-                        break;
-                    case "О среднем заработке":
-                        type = 3;
-                        break;
-                    case "Произвольная справка":
-                        type = 4;
-                        other = textBox4.Text; 
-                        break;
-                }
-
-                if (type == 4 && string.IsNullOrWhiteSpace(other))
-                {
-                    MessageBox.Show("Укажите текст произвольной справки");
-                }
-
-                currentProof = new Proof(
-                    LoginForm.userId,           // userId
-                    textBox1.Text,              // name
-                    textBox2.Text,              // surname
-                    textBox3.Text,              // patronymic
-                    type,                       // type
-                    other,                      // other
-                    (int)numericUpDown1.Value,  // count
-                    richTextBox1.Text           // reason
-                );
-
-
-                bool saved = currentProof.SaveToDatabase();
-
-                if (saved)
-                {
-                    MessageBox.Show($"Запрос успешно создан!");
-
-
-                    textBox1.Clear();
-                    textBox2.Clear();
-                    textBox3.Clear();
-                    textBox4.Clear();
-                    richTextBox1.Clear();
-                    numericUpDown1.Value = 1;
-                    comboBox1.SelectedIndex = -1;
-                    textBox4.Visible = false;
-                    currentProof = null;
-
-                    this.Close();
-                }
                 else
                 {
-                    MessageBox.Show("Не удалось сохранить запрос в БД!", "Ошибка",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    int type = 0;
+                    string other = "";
+
+                    switch (comboBox1.Text)
+                    {
+                        case "2-НДФЛ":
+                            type = 1;
+                            break;
+                        case "О месте работы и стаже":
+                            type = 2;
+                            break;
+                        case "О среднем заработке":
+                            type = 3;
+                            break;
+                        case "Произвольная справка":
+                            type = 4;
+                            other = textBox4.Text;
+                            break;
+                    }
+
+                    if (type == 4 && string.IsNullOrWhiteSpace(other))
+                    {
+                        MessageBox.Show("Укажите текст произвольной справки");
+                    }
+
+                    currentProof = new Proof(
+                        LoginForm.userId,           
+                        textBox1.Text,              
+                        textBox2.Text,              
+                        textBox3.Text,              
+                        type,                       
+                        other,                      
+                        (int)numericUpDown1.Value,  
+                        richTextBox1.Text           
+                    );
+
+
+                    bool saved = currentProof.SaveToDatabase();
+
+                    if (saved)
+                    {
+
+                        MessageBox.Show("Запрос успешно создан!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        textBox1.Clear();
+                        textBox2.Clear();
+                        textBox3.Clear();
+                        textBox4.Clear();
+                        richTextBox1.Clear();
+                        numericUpDown1.Value = 1;
+                        comboBox1.SelectedIndex = -1;
+                        textBox4.Visible = false;
+                        currentProof = null;
+
+                        this.Hide();
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Не удалось сохранить запрос в БД!", "Ошибка",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+
+                    
             }
             catch (Exception ex)
             {
@@ -109,6 +112,9 @@ namespace MySpravki
             }
         }
 
+        private void RequestForm_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

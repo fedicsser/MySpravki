@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
 
 namespace MySpravki
@@ -22,7 +23,6 @@ namespace MySpravki
         public DateTime CompletedIn { get; set; }
         public string Path { get; set; }
 
-        // Конструктор для создания объекта
         public Proof(int userId, string name, string surname, string patronymic,
                      int type, string other, int count, string reason)
         {
@@ -40,7 +40,6 @@ namespace MySpravki
             Path = null;
         }
 
-        // Конструктор для загрузки из БД
         public Proof(int id, int userId, string name, string surname, string patronymic,
                      int type, string other, int count, string reason,
                      string status, DateTime createdAt, DateTime completedIn, string path)
@@ -60,7 +59,6 @@ namespace MySpravki
             Path = path;
         }
 
-        // Метод для сохранения в БД
         public bool SaveToDatabase()
         {
             DB db = new DB();
@@ -98,7 +96,6 @@ namespace MySpravki
             }
         }
 
-        // Статический метод для получения всех заявок пользователя
         public static List<Proof> GetUserProofs(int userId)
         {
             List<Proof> proofs = new List<Proof>();
@@ -147,7 +144,53 @@ namespace MySpravki
             return proofs;
         }
 
-        // Метод для получения названия типа справки
+        public static List<Proof> GetProofsForWorker()
+        {
+            List<Proof> proofs = new List<Proof>();
+            DB db = new DB();
+
+            try
+            {
+                db.openConnection();
+                string query = "SELECT * FROM `Proof` WHERE `status` != 'завершено' ORDER BY `created_at` DESC;";
+                MySqlCommand cmd = new MySqlCommand(query, db.getConnection());
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Proof proof = new Proof(
+                            reader.GetInt32("id"),
+                            reader.GetInt32("userId"),
+                            reader.GetString("name"),
+                            reader.GetString("surname"),
+                            reader.GetString("patronymic"),
+                            reader.GetInt32("type"),
+                            reader.IsDBNull(reader.GetOrdinal("other")) ? "" : reader.GetString("other"),
+                            reader.GetInt32("count"),
+                            reader.GetString("reason"),
+                            reader.GetString("status"),
+                            reader.GetDateTime("created_at"),
+                            reader.GetDateTime("completed_in"),
+                            reader.IsDBNull(reader.GetOrdinal("path")) ? null : reader.GetString("path")
+                        );
+                        proofs.Add(proof);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+
+            return proofs;
+        }
+
         public string GetTypeName()
         {
             switch (Type)
@@ -157,6 +200,71 @@ namespace MySpravki
                 case 3: return "О среднем заработке";
                 case 4: return "Произвольная справка";
                 default: return "Неизвестный тип";
+            }
+        }
+
+        public bool UpdateStatus(string newStatus)
+        {
+            DB db = new DB();
+            try
+            {
+                db.openConnection();
+                string query = "UPDATE `Proof` SET `status` = @status WHERE `id` = @id;";
+                MySqlCommand cmd = new MySqlCommand(query, db.getConnection());
+                cmd.Parameters.AddWithValue("@status", newStatus);
+                cmd.Parameters.AddWithValue("@id", Id);
+
+                int result = cmd.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    Status = newStatus;
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при обновлении статуса: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+        }
+
+        public bool UpdatePath(string filePath)
+        {
+            DB db = new DB();
+            try
+            {
+                db.openConnection();
+                string query = "UPDATE `Proof` SET `path` = @path, `status` = 'завершено', `completed_in` = @completedIn WHERE `id` = @id;";
+                MySqlCommand cmd = new MySqlCommand(query, db.getConnection());
+                cmd.Parameters.AddWithValue("@path", filePath);
+                cmd.Parameters.AddWithValue("@completedIn", DateTime.Now);
+                cmd.Parameters.AddWithValue("@id", Id);
+
+                int result = cmd.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    Path = filePath;
+                    Status = "завершено";
+                    CompletedIn = DateTime.Now;
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при обновлении пути: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                db.closeConnection();
             }
         }
     }
