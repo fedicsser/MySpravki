@@ -33,12 +33,13 @@
             addBTN = new Button();
             UpdBTN = new Button();
             logoutBTN = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Location = new Point(12, 48);
+            flowLayoutPanel1.Location = new Point(12, 35);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(960, 430);
             flowLayoutPanel1.TabIndex = 0;
@@ -46,7 +47,7 @@
             // 
             // addBTN
             // 
-            addBTN.Location = new Point(12, 497);
+            addBTN.Location = new Point(12, 484);
             addBTN.Name = "addBTN";
             addBTN.Size = new Size(162, 23);
             addBTN.TabIndex = 1;
@@ -56,7 +57,7 @@
             // 
             // UpdBTN
             // 
-            UpdBTN.Location = new Point(810, 497);
+            UpdBTN.Location = new Point(193, 484);
             UpdBTN.Name = "UpdBTN";
             UpdBTN.Size = new Size(162, 23);
             UpdBTN.TabIndex = 2;
@@ -66,7 +67,7 @@
             // 
             // logoutBTN
             // 
-            logoutBTN.Location = new Point(897, 588);
+            logoutBTN.Location = new Point(897, 531);
             logoutBTN.Name = "logoutBTN";
             logoutBTN.Size = new Size(75, 23);
             logoutBTN.TabIndex = 3;
@@ -74,19 +75,35 @@
             logoutBTN.UseVisualStyleBackColor = true;
             logoutBTN.Click += logoutBTN_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label1.ForeColor = SystemColors.Highlight;
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(207, 23);
+            label1.TabIndex = 4;
+            label1.Text = "Запрошенные справки";
+            // 
             // Mainform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(984, 623);
+            BackColor = Color.White;
+            ClientSize = new Size(984, 561);
+            Controls.Add(label1);
             Controls.Add(logoutBTN);
             Controls.Add(UpdBTN);
             Controls.Add(addBTN);
             Controls.Add(flowLayoutPanel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "Mainform";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Мои Справки";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -95,5 +112,6 @@
         private Button addBTN;
         private Button UpdBTN;
         private Button logoutBTN;
+        private Label label1;
     }
 }

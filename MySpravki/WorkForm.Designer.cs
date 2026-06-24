@@ -32,22 +32,23 @@
             UpdBTN = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             logoutBTN = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // UpdBTN
             // 
-            UpdBTN.Location = new Point(810, 461);
+            UpdBTN.Location = new Point(12, 471);
             UpdBTN.Name = "UpdBTN";
             UpdBTN.Size = new Size(162, 23);
             UpdBTN.TabIndex = 5;
             UpdBTN.Text = "Обновить статусы";
             UpdBTN.UseVisualStyleBackColor = true;
-/*            UpdBTN.Click += UpdBTN_Click_1;*/
+            UpdBTN.Click += UpdBTN_Click_1;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Location = new Point(12, 12);
+            flowLayoutPanel1.Location = new Point(12, 35);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(960, 430);
             flowLayoutPanel1.TabIndex = 3;
@@ -55,7 +56,7 @@
             // 
             // logoutBTN
             // 
-            logoutBTN.Location = new Point(896, 521);
+            logoutBTN.Location = new Point(897, 526);
             logoutBTN.Name = "logoutBTN";
             logoutBTN.Size = new Size(75, 23);
             logoutBTN.TabIndex = 6;
@@ -63,18 +64,34 @@
             logoutBTN.UseVisualStyleBackColor = true;
             logoutBTN.Click += logoutBTN_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label1.ForeColor = SystemColors.Highlight;
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(268, 23);
+            label1.TabIndex = 7;
+            label1.Text = "Заявки на получение справок";
+            // 
             // WorkForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(984, 556);
+            BackColor = Color.White;
+            ClientSize = new Size(984, 561);
+            Controls.Add(label1);
             Controls.Add(logoutBTN);
             Controls.Add(UpdBTN);
             Controls.Add(flowLayoutPanel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "WorkForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Запрвшиваемые спарвки";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -82,5 +99,6 @@
         private Button UpdBTN;
         private FlowLayoutPanel flowLayoutPanel1;
         private Button logoutBTN;
+        private Label label1;
     }
 }

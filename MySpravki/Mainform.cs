@@ -58,7 +58,7 @@ namespace MySpravki
                     {
                         Panel cardPanel = new Panel();
                         cardPanel.Width = flowLayoutPanel1.Width - 10;
-                        cardPanel.Height = 130;
+                        cardPanel.Height = 120;
                         cardPanel.BorderStyle = BorderStyle.FixedSingle;
                         cardPanel.BackColor = Color.White;
                         cardPanel.Padding = new Padding(10);
@@ -113,8 +113,8 @@ namespace MySpravki
                             lblStatus.ForeColor = Color.Blue;
                         }
 
-                        lblStatus.Location = new Point(650, 45);
-                        lblStatus.Size = new Size(200, 25);
+                        lblStatus.Location = new Point(650, 60);
+                        lblStatus.Size = new Size(220, 30);
                         cardPanel.Controls.Add(lblStatus);
 
                         Label lblCount = new Label();
@@ -140,7 +140,7 @@ namespace MySpravki
                             Button downloadBtn = new Button();
                             downloadBtn.Text = "Скачать справку";
                             downloadBtn.Size = new Size(120, 30);
-                            downloadBtn.Location = new Point(200, 80);
+                            downloadBtn.Location = new Point(200, 75);
                             downloadBtn.BackColor = Color.LightGreen;
                             downloadBtn.FlatStyle = FlatStyle.Flat;
                             downloadBtn.Tag = proof;

@@ -52,7 +52,7 @@ namespace MySpravki
                     {
                         Panel cardPanel = new Panel();
                         cardPanel.Width = flowLayoutPanel1.Width - 10;
-                        cardPanel.Height = 200;
+                        cardPanel.Height = 150;
                         cardPanel.BorderStyle = BorderStyle.FixedSingle;
                         cardPanel.BackColor = Color.White;
                         cardPanel.Padding = new Padding(10);
@@ -219,7 +219,7 @@ namespace MySpravki
 
                         if (proof.UpdatePath(savePath))
                         {
-                            LoadProofs();
+                            //LoadProofs();
                             MessageBox.Show($"Справка для заявки #{proof.Id} успешно загружена!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -242,6 +242,11 @@ namespace MySpravki
             this.Close();
             LoginForm lg = new LoginForm();
             lg.Show();
+        }
+
+        private void UpdBTN_Click_1(object sender, EventArgs e)
+        {
+            LoadProofs();
         }
     }
 }

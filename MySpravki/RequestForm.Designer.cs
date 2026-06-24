@@ -43,6 +43,7 @@
             label5 = new Label();
             label6 = new Label();
             numericUpDown1 = new NumericUpDown();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
@@ -164,11 +165,23 @@
             numericUpDown1.Size = new Size(120, 23);
             numericUpDown1.TabIndex = 13;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label7.ForeColor = SystemColors.Highlight;
+            label7.Location = new Point(80, 20);
+            label7.Name = "label7";
+            label7.Size = new Size(147, 23);
+            label7.TabIndex = 14;
+            label7.Text = "Запрос справки";
+            // 
             // RequestForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(313, 574);
+            Controls.Add(label7);
             Controls.Add(numericUpDown1);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -183,7 +196,9 @@
             Controls.Add(textBox1);
             Controls.Add(requestBTN);
             Controls.Add(comboBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "RequestForm";
             Text = "Запрос спарвки";
             Load += RequestForm_Load;
@@ -208,5 +223,6 @@
         private Label label5;
         private Label label6;
         private NumericUpDown numericUpDown1;
+        private Label label7;
     }
 }

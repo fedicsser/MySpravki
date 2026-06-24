@@ -16,7 +16,7 @@ namespace MySpravki
         public static int userId;
         public LoginForm()
         {
-            
+
             InitializeComponent();
         }
 
@@ -27,7 +27,7 @@ namespace MySpravki
 
         private void lgbtn_Click(object sender, EventArgs e)
         {
-            if(loginT.Text == "" ||  passwprdT.Text == "")
+            if (loginT.Text == "" || passwprdT.Text == "")
             {
                 MessageBox.Show("Заполни все поля");
             }
@@ -39,7 +39,7 @@ namespace MySpravki
                     if (authuserId != null)
                     {
                         MessageBox.Show("Добро пожаловать");
-                        
+
                         userId = Convert.ToInt32(authuserId);
                         this.Hide();
                         if (userId == 2)
@@ -52,8 +52,8 @@ namespace MySpravki
                             Mainform mainform = new Mainform();
                             mainform.ShowDialog();
                         }
-                            
-                        
+
+
                     }
                     else
                     {
@@ -66,6 +66,11 @@ namespace MySpravki
                 }
 
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
