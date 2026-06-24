@@ -25,6 +25,7 @@ namespace MySpravki
             }
         }
 
+        //Запрос на создание спаравки
         private void requestBTN_Click(object sender, EventArgs e)
         {
             try

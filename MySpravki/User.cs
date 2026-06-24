@@ -7,12 +7,14 @@ using MySql.Data.MySqlClient;
 
 namespace MySpravki
 {
+    //класс сущности юзер
     public class User
     {
         public int id;
         public string login;
         public string password;
 
+        //метод авторизации пользака
         public static string UserAuth(string Login, string Password)
         {
             DB db = new DB();

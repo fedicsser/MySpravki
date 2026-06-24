@@ -20,7 +20,7 @@ namespace MySpravki
             requestForm.FormClosed += RequestForm_FormClosed;
             requestForm.ShowDialog();
         }
-
+        //метод отслуживающий закртыие формы для обновления
         private void RequestForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             LoadProofs();
@@ -28,9 +28,9 @@ namespace MySpravki
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-
+            
         }
-
+        //метод созадания карточек запрошенных заявок
         public void LoadProofs()
         {
             try

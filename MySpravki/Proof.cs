@@ -22,7 +22,7 @@ namespace MySpravki
         public DateTime CreatedAt { get; set; }
         public DateTime CompletedIn { get; set; }
         public string Path { get; set; }
-
+        //конструкотора для создниая справок
         public Proof(int userId, string name, string surname, string patronymic,
                      int type, string other, int count, string reason)
         {
@@ -58,7 +58,7 @@ namespace MySpravki
             CompletedIn = completedIn;
             Path = path;
         }
-
+        //метод для загрузки объекта "справка в бд"
         public bool SaveToDatabase()
         {
             DB db = new DB();
@@ -95,7 +95,7 @@ namespace MySpravki
                 db.closeConnection();
             }
         }
-
+        //метод для получения всех справок у юзера
         public static List<Proof> GetUserProofs(int userId)
         {
             List<Proof> proofs = new List<Proof>();
@@ -143,7 +143,7 @@ namespace MySpravki
 
             return proofs;
         }
-
+        // метод для получние всех справок для работников для создания карточек заявок
         public static List<Proof> GetProofsForWorker()
         {
             List<Proof> proofs = new List<Proof>();
@@ -190,7 +190,7 @@ namespace MySpravki
 
             return proofs;
         }
-
+        //метод для полученитя типа
         public string GetTypeName()
         {
             switch (Type)
@@ -203,6 +203,7 @@ namespace MySpravki
             }
         }
 
+        //метод для обновления статуса справки
         public bool UpdateStatus(string newStatus)
         {
             DB db = new DB();
@@ -233,7 +234,7 @@ namespace MySpravki
                 db.closeConnection();
             }
         }
-
+        //метод для загрузки в бд пути для загруженной сравки
         public bool UpdatePath(string filePath)
         {
             DB db = new DB();

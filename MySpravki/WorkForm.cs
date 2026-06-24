@@ -27,6 +27,7 @@ namespace MySpravki
 
         }
 
+        //метод загрузки карточек заявок на справки
         public void LoadProofs()
         {
             try
@@ -48,6 +49,7 @@ namespace MySpravki
                 }
                 else
                 {
+                    //создние всех карточек
                     foreach (Proof proof in proofs)
                     {
                         Panel cardPanel = new Panel();
@@ -196,6 +198,7 @@ namespace MySpravki
             }
         }
 
+        //фунцонал кнопки загрузки
         private void UploadBtn_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -231,11 +234,11 @@ namespace MySpravki
                 }
             }
         }
-
-        private void UpdBTN_Click(object sender, EventArgs e)
+        
+        /*private void UpdBTN_Click(object sender, EventArgs e)
         {
             LoadProofs();
-        }
+        }*/
 
         private void logoutBTN_Click(object sender, EventArgs e)
         {
