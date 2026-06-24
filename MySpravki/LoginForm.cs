@@ -38,7 +38,7 @@ namespace MySpravki
                     string authuserId = User.UserAuth(loginT.Text, passwprdT.Text);
                     if (authuserId != null)
                     {
-                        MessageBox.Show("Добро пожаловать");
+                        MessageBox.Show("Добро пожаловать!");
 
                         userId = Convert.ToInt32(authuserId);
                         this.Hide();
@@ -57,7 +57,7 @@ namespace MySpravki
                     }
                     else
                     {
-                        MessageBox.Show("Не верно указан пользвоетль или пароль");
+                        MessageBox.Show("Не верно указан пользователь или пароль");
                     }
                 }
                 catch (Exception ex)
