@@ -37,6 +37,10 @@ namespace MySpravki
                 {
                     MessageBox.Show("Заполните все поля!");
                 }
+                else if (comboBox1.Text != "2-НДФЛ" && comboBox1.Text != "О месте работы и стаже" && comboBox1.Text != "О среднем заработке" && comboBox1.Text != "Произвольная справка")
+                {
+                    MessageBox.Show("Не верный тип спрвки");
+                }
                 else
                 {
                     int type = 0;
@@ -65,14 +69,14 @@ namespace MySpravki
                     }
 
                     currentProof = new Proof(
-                        LoginForm.userId,           
-                        textBox1.Text,              
-                        textBox2.Text,              
-                        textBox3.Text,              
-                        type,                       
-                        other,                      
-                        (int)numericUpDown1.Value,  
-                        richTextBox1.Text           
+                        LoginForm.userId,
+                        textBox1.Text,
+                        textBox2.Text,
+                        textBox3.Text,
+                        type,
+                        other,
+                        (int)numericUpDown1.Value,
+                        richTextBox1.Text
                     );
 
 
@@ -94,7 +98,7 @@ namespace MySpravki
                         currentProof = null;
 
                         this.Hide();
-                        
+
                     }
                     else
                     {
@@ -103,7 +107,7 @@ namespace MySpravki
                     }
                 }
 
-                    
+
             }
             catch (Exception ex)
             {
@@ -113,6 +117,11 @@ namespace MySpravki
         }
 
         private void RequestForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
         }

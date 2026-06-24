@@ -8,7 +8,7 @@ namespace MySpravki
 {
     public partial class WorkForm : Form
     {
-        private string proofsFolderPath = @"C:\Users\fedics\source\repos\MySpravki\MySpravki\proofs\";
+        private string proofsFolderPath = Path.Combine(Application.StartupPath, "proofs");
 
         public WorkForm()
         {

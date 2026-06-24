@@ -55,6 +55,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(167, 23);
             comboBox1.TabIndex = 0;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged_1;
             // 
             // requestBTN
             // 
